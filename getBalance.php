@@ -15,7 +15,7 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 $data = json_decode($result, true);
-echo $result->{'balance'};
+echo json_encode($result->{'balance'});
 
 // header('Content-Type: application/json; charset=utf-8');
 // header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
