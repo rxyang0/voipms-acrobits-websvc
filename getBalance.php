@@ -1,20 +1,27 @@
 <?
-$postfields = array(
-    'api_username'=>'yangrichard@protonmail.com',
-    'api_password'=>'&v$PW?2o!s3#dGN*',
-    'method'=>'getBalance'
-);
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
-curl_setopt($ch, CURLOPT_POST, true );
-curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-curl_setopt($ch, CURLOPT_URL, "https://voip.ms/api/v1/rest.php");
-$result = curl_exec($ch);
-curl_close($ch);
+if (isset($_GET['api_username']) && isset($_GET['api_password'])) {
+    
+    $postfields = array(
+        'api_username'=>'$_GET['api_username']',
+        'api_password'=>'$_GET['api_password']',
+        'method'=>'getBalance'
+    );
 
-$data=json_decode($result,true);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt($ch, CURLOPT_POST, true );
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+    curl_setopt($ch, CURLOPT_URL, "https://voip.ms/api/v1/rest.php");
+    $result = curl_exec($ch);
+    curl_close($ch);
 
-header('Content-Type: application/json; charset=utf-8');
-header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-echo json_encode($data);
+    $data=json_decode($result,true);
+
+    header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+    echo json_encode($data);
+
+} else {
+    echo "No username/password provided.";
+}
