@@ -19,3 +19,4 @@ header('Content-Type: application/json');
 echo "<pre>";
 print_r($data);
 echo "</pre>";
+echo "<p> this is a test </p>";
