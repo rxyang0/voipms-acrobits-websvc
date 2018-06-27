@@ -1,5 +1,7 @@
 <?
 
+$currency = "USD";
+
 $postfields = array(
     'api_username'=>$_GET['api_username'],
     'api_password'=>$_GET['api_password'],
@@ -11,15 +13,11 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
 curl_setopt($ch, CURLOPT_URL, "https://voip.ms/api/v1/rest.php");
-$data = curl_exec($ch);
+$data = json_decode(curl_exec($ch), true);
 curl_close($ch);
 
-$data = json_decode($data, true);
-$status = $data['status'];
-
-if ($status == "success") {
-    $balance = round($data['balance']['current_balance'], 2);
-    $result = '{"balanceString" : "USD ' . $balance . '"}';
+if ($data['status'] == "success") {
+    $result = '{"balanceString" : "' . $currency . ' ' . round($data['balance']['current_balance'], 2) . '"}';
 } else {
     $result = '{"balanceString" : "BAL ERROR"}';
 }
