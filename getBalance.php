@@ -17,10 +17,11 @@ if (isset($_GET['api_username']) && isset($_GET['api_password'])) {
     curl_close($ch);
 
     $data=json_decode($result,true);
+    echo $data;
 
-    header('Content-Type: application/json; charset=utf-8');
-    header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-    echo json_encode($data);
+//    header('Content-Type: application/json; charset=utf-8');
+//    header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+//    echo json_encode($data);
 
 } else {
     echo "No username/password provided.";
