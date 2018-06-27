@@ -15,6 +15,7 @@ curl_close($ch);
 
 $data=json_decode($result,true);
 
+header('Content-Type: application/json');
 echo "<pre>";
 print_r($data);
 echo "</pre>";
