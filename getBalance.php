@@ -3,8 +3,8 @@
 if (isset($_GET['api_username']) && isset($_GET['api_password'])) {
     
     $postfields = array(
-        'api_username'=>'$_GET['api_username']',
-        'api_password'=>'$_GET['api_password']',
+        'api_username'=>$_GET['api_username'],
+        'api_password'=>$_GET['api_password'],
         'method'=>'getBalance'
     );
 
