@@ -19,9 +19,9 @@ $status = $data['status'];
 
 if ($status == "success") {
     $balance = round($data['balance']['current_balance'], 2);
-    $result = '{"balanceString" : "USD " . $balance}';
-else {
-    $result = '{"balanceString" : "BAL ERROR"}'
+    $result = '{"balanceString" : "USD ' . $balance . '"}';
+} else {
+    $result = '{"balanceString" : "BAL ERROR"}';
 }
 
 header('Content-Type: application/json; charset=utf-8');
