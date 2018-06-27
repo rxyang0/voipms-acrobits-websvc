@@ -17,7 +17,7 @@ curl_close($ch);
 if ($data['status'] == "success") {
     $result = '{"balanceString" : "' . $currency . ' ' . round($data['balance']['current_balance'], 2) . '"}';
 } else {
-    $result = '{"balanceString" : "BAL ERROR"}';
+    $result = '{"balanceString" : "BAL CHK ERROR"}';
 }
 
 header('Content-Type: application/json; charset=utf-8');
