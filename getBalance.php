@@ -16,7 +16,7 @@ curl_setopt($ch, CURLOPT_URL, "https://voip.ms/api/v1/rest.php");
 $data = json_decode(curl_exec($ch), true);
 curl_close($ch);
 
-if ($data['status'] == "success") {
+if ($data['status'] != "success") {
     $result = '{"balanceString" : "' . $currency . ' ' . round($data['balance']['current_balance'], 2) . '"}';
 } else {
     $result = '{"balanceString" : "BAL ERROR"}';
