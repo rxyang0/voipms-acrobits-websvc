@@ -15,5 +15,6 @@ curl_close($ch);
 
 $data=json_decode($result,true);
 
-header('Content-Type: application/json;charset=utf-8;Cache-Control:no-store,no-cache,must-revalidate,post-check=0,pre-check=0');
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store,no-cache, must-revalidate, post-check=0, pre-check=0');
 echo json_encode($data);
