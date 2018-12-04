@@ -1,5 +1,5 @@
 <?
-$currency = "USD";
+$prefix = "$";
 $postfields = array(
     'api_username'=>$_GET['api_username'],
     'api_password'=>$_GET['api_password'],
@@ -15,7 +15,7 @@ $data = json_decode(curl_exec($ch), true);
 curl_close($ch);
 
 if ($data['status'] == "success") {
-    $result = '{"balanceString" : "' . $currency . ' ' . round($data['balance']['current_balance'], 2) . '"}';
+    $result = '{"balanceString" : "' . $prefix . round($data['balance']['current_balance'], 2) . '"}';
 } else {
     $result = '{"balanceString" : "BAL CHK ERROR"}';
 }
