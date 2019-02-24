@@ -1,4 +1,4 @@
-<?
+<?php
 $prefix = "$";
 $postfields = array(
     'api_username'=>$_GET['api_username'],
@@ -15,7 +15,7 @@ $data = json_decode(curl_exec($ch), true);
 curl_close($ch);
 
 if ($data['status'] == "success") {
-    $result = '{"balanceString" : "' . $prefix . round($data['balance']['current_balance'], 2) . '"}';
+    $result = '{"balanceString" : "' . $prefix . number_format((float)$data['balance']['current_balance'], 2, '.', '') . '"}';
 } else {
     $result = '{"balanceString" : "BAL CHK ERROR"}';
 }
@@ -23,3 +23,4 @@ if ($data['status'] == "success") {
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 echo $result;
+?>
